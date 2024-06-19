@@ -13,7 +13,7 @@ export default async function Profile() {
             <h1>Profile</h1>
             <h2>{session?.user?.name}</h2>
             <h3>{session?.user?.email}</h3>
-            <h3>Role: {session?.user?.role}</h3>
+            <h3>Role: {session?.user?.role?.name}</h3>
         </div>
     );
 }

@@ -13,8 +13,8 @@ declare module "next-auth" {
             id: string,
             name: string,
             email: string,
-            role: string,
-            globalRole: {
+            password: string,
+            role: {
                 id: string,
                 name: string
             }
@@ -22,8 +22,7 @@ declare module "next-auth" {
     }
 
     interface User extends DefaultUser {
-        role: string,
-        globalRole: {
+        role: {
             id: string,
             name: string
         },
@@ -32,8 +31,7 @@ declare module "next-auth" {
 
 declare module "next-auth/jwt" {
     interface JWT extends DefaultJWT {
-        role: string,
-        globalRole: {
+        role: {
             id: string,
             name: string
         }

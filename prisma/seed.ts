@@ -3,11 +3,13 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-    const roleAdmin = await prisma.globalRole.create({
-        data: {name: "ADMIN"}
+    const roleAdmin = await prisma.role.create({
+        data: {
+            name: "ADMIN"
+        }
     })
 
-    const roleUser = await prisma.globalRole.create({
+    const roleUser = await prisma.role.create({
         data: {
             name: "USER"
         }
@@ -19,7 +21,7 @@ async function main() {
         create: {
             email: 'admin@email.com',
             name: 'Admin',
-            globalRole: {connect: roleAdmin}
+            role: {connect: roleAdmin}
         },
     })
     const user = await prisma.user.upsert({
@@ -28,7 +30,7 @@ async function main() {
         create: {
             email: 'user@email.com',
             name: 'User',
-            globalRole: {connect: roleUser}
+            role: {connect: roleUser}
         },
     })
 }

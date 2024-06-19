@@ -17,7 +17,7 @@ export const authConfig: NextAuthConfig = {
                 if (!credentials?.email || !credentials.password) return null;
 
                 const currentUser =
-                    await prisma.user.findFirst({where: {email: credentials.email}, include: {globalRole: true}})
+                    await prisma.user.findFirst({where: {email: credentials.email}, include: {role: true}})
 
                 if (currentUser) {
                     return currentUser as User;
@@ -39,15 +39,13 @@ export const authConfig: NextAuthConfig = {
         async jwt({token, user}) {
             if (user) {
                 token.role = user.role
-                token.globalRole = user.globalRole
             }
             return token
         },
         // Для использования в клиентских приложениях
         async session({session, token}) {
             if (session.user) {
-                session.user.role = token.role;
-                session.user.globalRole = token.globalRole
+                session.user.role = token.role
             }
 
             return session

@@ -19,13 +19,13 @@ export default auth((req) => {
     // Проверка доступа по ролям
     if (ADMIN_ROUTES.some((admin_route) => {
         return nextUrl.pathname.startsWith(admin_route)
-    }) && req?.auth?.user.role !== "admin") {
+    }) && req?.auth?.user?.role?.name?.toLowerCase() !== "admin") {
         return NextResponse.rewrite(new URL("/denied", req.url))
     }
 
     if (USER_ROUTES.some((user_route) => {
         return nextUrl.pathname.startsWith(user_route)
-    }) && req?.auth?.user.role !== "user") {
+    }) && req?.auth?.user?.role?.name?.toLowerCase() !== "user") {
         return NextResponse.rewrite(new URL("/denied", req.url))
     }
 });

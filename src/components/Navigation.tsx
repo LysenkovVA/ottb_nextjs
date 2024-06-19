@@ -31,7 +31,8 @@ const Navigation = ({navLinks}: Props) => {
                 );
             })}
             {session?.data && <Link href={"/profile"}>Профиль</Link>}
-            {session?.data?.user.role === "admin" && <Link href={"/admin-panel"}>Админка</Link>}
+            {session?.data?.user?.role?.name?.toLowerCase() === "admin" &&
+                <Link href={"/admin-panel"}>Админка</Link>}
             {session?.data ? (
                 <Link href="#" onClick={() => signOut({callbackUrl: "/login"})}>
                     Выйти

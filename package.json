@@ -13,7 +13,8 @@
     "prisma:migrate": "npm exec prisma migrate dev",
     "prisma:client:generate": "npm exec prisma generate",
     "prisma:db:push": "npm exec prisma db push",
-    "prisma:db:seed": "npx prisma db seedy"
+    "prisma:db:seed": "npx prisma db seed",
+    "prisma:initdb": "npm run prisma:migrate --name create_db && npm run prisma:db:seed"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.0.0",
