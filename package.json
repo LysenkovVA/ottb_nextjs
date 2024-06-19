@@ -2,25 +2,41 @@
   "name": "ottb_nextjs",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:migrate": "npm exec prisma migrate dev",
+    "prisma:client:generate": "npm exec prisma generate",
+    "prisma:db:push": "npm exec prisma db push",
+    "prisma:db:seed": "npx prisma db seedy"
   },
   "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.0",
+    "@auth/prisma-adapter": "^2.2.0",
+    "@prisma/client": "^5.15.0",
+    "antd": "^5.18.1",
+    "next": "14.2.4",
+    "next-auth": "^5.0.0-beta.19",
+    "pg": "^8.12.0",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.4"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "14.2.4"
+    "eslint-config-next": "14.2.4",
+    "postcss": "^8",
+    "prisma": "^5.15.0",
+    "tailwindcss": "^3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
   }
 }
